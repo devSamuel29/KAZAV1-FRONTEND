@@ -1,0 +1,34 @@
+.secondaryHeader {
+    background-color: #ecebeb;
+    width: 100vw;
+    margin-bottom: 2.0rem;
+}
+
+.secondaryNavbar {
+    width: 90%;
+    max-width: 1280px;
+    margin: auto;
+    padding: 1.0rem;
+}
+
+.secondaryNavbarItems {
+    display: flex;
+    align-items: center;
+    gap: 6.4rem;
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+    padding: 0;
+}
+
+.secondaryNavbarDropdownItem {
+    display: inline-block;
+    position: relative;
+    align-items: center;
+    gap: 12px;
+}
+
+
+.secondaryNavbarDropdownContent {
+    display: none;
+}
+
