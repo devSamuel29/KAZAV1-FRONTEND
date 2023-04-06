@@ -1,5 +1,5 @@
 .mainHeader {
-  width: 100vw;
+  width: 100%;
   max-width: 1280px;
   margin: auto;
 }
@@ -45,8 +45,7 @@
 }
 
 .navbarOption:hover {
-  filter: invert(6%) sepia(92%) saturate(6472%) hue-rotate(0deg) brightness(93%)
-    contrast(103%);
+  filter: invert(6%) sepia(92%) saturate(6472%) hue-rotate(0deg) brightness(93%) contrast(103%);
 }
 
 .mobileOptions {
@@ -55,24 +54,6 @@
 
 .smallMobileMenu {
   display: none;
-}
-
-.burger-menu-options {
-  display: none;
-}
-
-.burger-menu-options-open {
-  display: block;
-  position: absolute;
-  background-color: #ecebeb;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  border-radius: 0.6rem;
-}
-
-.small-mobile-menu button {
-  border: none;
-  background-color: #fff;
 }
 
 @media (max-width: 768px) {
@@ -100,5 +81,18 @@
   .smallMobileMenu {
     display: block;
     font-size: 1.3rem;
+  }
+
+  .burgerMenuOptions {
+    display: none;
+  }
+
+  .burgerMenuOptionsOpen {
+    display: block;
+    position: absolute;
+    background-color: #ecebeb;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    border-radius: 0.6rem;
   }
 }

@@ -1,34 +1,48 @@
-.secondaryHeader {
-    background-color: #ecebeb;
+/* .secondaryHeader {
     width: 100vw;
     margin-bottom: 2.0rem;
 }
 
 .secondaryNavbar {
-    width: 90%;
-    max-width: 1280px;
-    margin: auto;
-    padding: 1.0rem;
+
+
+} */
+
+.secondaryHeader {
+    width: 100%;
+    background-color: #ecebeb;
 }
+  
+.secondaryNavbar {
+    display: flex;
+    max-width: 1280px;
+    padding: 1.0rem;
+    margin: auto;
+  }
+
 
 .secondaryNavbarItems {
     display: flex;
-    align-items: center;
-    gap: 6.4rem;
+    gap: 6.0rem;
     font-size: 1.4rem;
-    line-height: 1.7rem;
-    padding: 0;
+    padding-left: 3.0rem;
 }
 
 .secondaryNavbarDropdownItem {
-    display: inline-block;
-    position: relative;
+    display: flex;
     align-items: center;
-    gap: 12px;
 }
 
+.secondaryNavbarDropdownItem img {
+    margin-left: 1.0rem;
+}
 
 .secondaryNavbarDropdownContent {
     display: none;
+    position: absolute;
 }
 
+.secondaryNavbarDropdownContentShow {
+    display: block;
+    position: absolute;
+}

@@ -8,8 +8,8 @@ import Styles from '../../styles/Footer.module.css'
 
 export default function Footer() {
     return (
-        <footer className={Styles.footerContainer}>
-            <div className={Styles.footerContent}>
+        <footer className={Styles.mainFooter}>
+            <div className={Styles.footerContainer}>
                 <div className={Styles.footerContacts}>
                     <Image src={Logo.src} alt="logo" width={90} height={50} />
                     <p>

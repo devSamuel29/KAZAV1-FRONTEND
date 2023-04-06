@@ -1,13 +1,14 @@
-.footerContainer {
+.mainFooter {
     width: 100vw;
-    margin: auto;
     font-size: 1.25rem;  
+    background-color: #ecebeb;
 }
 
-.footerContent {
-    display: grid;
+.footerContainer {
+    width: 100%;
+    max-width: 1280px;
     margin: auto;
-    background-color: #ecebeb;
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
     padding: 3rem 3.5rem;
 }
@@ -35,7 +36,7 @@
 }
 
 .footerSocialMedia .footerLink:hover {
-    color: #880000;
+    filter: invert(6%) sepia(92%) saturate(6472%) hue-rotate(0deg) brightness(93%) contrast(103%);
 }
 
 .footerList {
@@ -58,4 +59,33 @@
     background-color: rgba(0, 0, 0, 0.123);
     font-size: 0.9rem;
     padding: 1.5rem;
+}
+
+@media (max-width: 500px) {
+    .footerContainer {
+        width: 100%;
+        max-width: 1280px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        padding: 3rem 3.5rem;   
+    }
+    
+    .footerContacts {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footerContacts p {
+        width: 40%;
+    }
+
+    .footerList {
+        padding-left: 0;
+        padding-top: 3.0rem;
+        justify-content: center;
+        align-items: center;
+    }
 }

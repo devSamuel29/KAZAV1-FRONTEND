@@ -39,23 +39,21 @@ export default function Navbar() {
                 <div className={Styles.smallMobileMenu}>
                     <Image src={BurgerMenu.src} alt='burger-menu' width={24} height={24}/>
 
-                    <div>
-                        <ul className="burgerMenuOptions">
-                            <li>
-                                <Link href="#">
-                                    <Image src={UserLogo.src} alt='user-logo' width={24} height={24} />
-                                    Entrar ou <br /> cadastre-se
-                                </Link>
-                            </li>
+                    <ul className={Styles.burgerMenuOptions}>
+                        <li>
+                            <Link href="/auth/entrar">
+                                <Image src={UserLogo.src} alt='user-logo' width={24} height={24} />
+                                Entrar ou <br /> cadastre-se
+                            </Link>
+                        </li>
 
-                            <li>
-                                <Link href="auth/entrar">
-                                    <Image src={CartLogo.src} alt='user-cart' width={24} height={24} />
-                                    Carrinho
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
+                        <li>
+                            <Link href="#">
+                                <Image src={CartLogo.src} alt='user-cart' width={24} height={24} />
+                                Carrinho
+                            </Link>
+                        </li>
+                    </ul>
                 </div>
             </nav>
         </header>
