@@ -27,8 +27,8 @@
 .loginContainer {
     display: flex;
     flex-direction: column;
-    width: 80%;
-    max-width: 64.0rem;
+    width: 800px;
+    max-width: 1280px;
     padding: 4.0rem;
     margin: auto;
     margin-bottom: 5.0rem;

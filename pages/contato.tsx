@@ -1,6 +1,9 @@
-export default function ContactPage() {
-    return (
-      <>
-      </>
-    )
-  }
+import ContactForm from "@/components/ContactForm";
+
+const ContactPage = () => {
+  return (
+    <ContactForm />
+  );
+}
+
+export default ContactPage;
