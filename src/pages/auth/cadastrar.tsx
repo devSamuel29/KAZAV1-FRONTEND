@@ -1,9 +1,5 @@
-import { Hero } from "@/layouts/auth/register/sections/hero/hero";
+import { Hero } from '~/layouts/auth/register/sections/hero/hero'
 
-const RegisterPage = () => {
-    return (
-        <Hero />
-    )
+export default function SignUpPage() {
+  return <Hero />
 }
-
-export default RegisterPage;

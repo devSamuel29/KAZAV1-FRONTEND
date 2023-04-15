@@ -1,11 +1,10 @@
-import Link from "next/link";
-import Image from "next/image";
+import Image from 'next/image'
+import Link from 'next/link'
+import Styles from '@/styles/Navbar.module.css'
+import * as Images from '../img'
+import * as Svg from '../svg'
 
-import Styles from "@/styles/Navbar.module.css";
-import * as Svg from "../svg";
-import * as Images from "../img";
-
-const Navbar = () => {
+export function Navbar() {
   return (
     <header className={Styles.mainHeader}>
       <nav className={Styles.navbarContainer}>
@@ -57,7 +56,5 @@ const Navbar = () => {
         </div>
       </nav>
     </header>
-  );
-};
-
-export default Navbar;
+  )
+}

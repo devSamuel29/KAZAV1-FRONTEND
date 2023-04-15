@@ -1,11 +1,9 @@
-import Link from "next/link";
-import Image from "next/image";
+import Image from 'next/image'
+import Link from 'next/link'
+import Styles from '@/styles/SecondaryNavbar.module.css'
+import * as Svg from '../svg'
 
-import Styles from "@/styles/SecondaryNavbar.module.css";
-import * as Svg from "../svg";
-import * as Images from "../img";
-
-const SecondaryNavbar = () => {
+export function SecondaryNavbar() {
   return (
     <header className={Styles.secondaryHeader}>
       <nav className={Styles.secondaryNavbar}>
@@ -48,7 +46,7 @@ const SecondaryNavbar = () => {
         </ul>
       </nav>
     </header>
-  );
-};
+  )
+}
 
-export default SecondaryNavbar;
+export default SecondaryNavbar

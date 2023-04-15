@@ -1,9 +1,5 @@
-const Home = () => {
-  return (
-    <>
+import { Hero } from '~/layouts/index/sections'
 
-    </>
-  )
+export default function HomePage() {
+  return <Hero />
 }
-
-export default Home;
