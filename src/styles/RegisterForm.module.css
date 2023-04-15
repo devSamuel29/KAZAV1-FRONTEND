@@ -1,0 +1,59 @@
+.registerContainer {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    max-width: 70.0rem;
+    padding: 4.0rem;
+    margin: auto;
+    margin-top: 4.0rem;
+    margin-bottom: 4.0rem;
+    background: #ecebeb;
+    border-radius: 1.0rem;
+    font-size: 1.3rem;
+}
+
+.registerFormTitle {
+    margin-bottom: 1.3rem;
+}
+
+.registerFormControlOn {
+    display: block;
+}
+
+.registerFormControlOff {
+    display: none;
+}
+
+.registerFormInput {
+    width: 100%;
+    font-size: 1.6rem;
+    padding: 0.8rem;
+    margin-bottom: 1.3rem;
+    background-color: #fff;
+    border-radius: 1.0rem;
+}
+
+.registerFormSmallOff {
+    display: none;
+}
+
+.registerFormSmallOn {
+    display: block;
+    margin-bottom: 1.3rem;
+}
+
+.registerFormControlOn button {
+    position: block;
+    background-color: #880000;
+    color: #fff;
+    width: 7.0rem;
+    height: 3.0rem;
+    font-size: 1.3rem;
+    border-radius: 0.5rem;
+    margin-right: 1.0rem;
+    border: 0;
+}
+
+.registerFormControlOn button:hover {
+    opacity: 50%;
+}

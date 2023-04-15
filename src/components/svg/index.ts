@@ -1,0 +1,8 @@
+export { default as ArrowDown } from "./arrow-down.svg"
+export { default as BurgerMenu } from "./burger-menu.svg"
+export { default as CartLogo } from "./cart-logo.svg"
+export { default as IconDone } from "./icon-done.svg"
+export { default as IconFacebook } from "./icon-facebook.svg"
+export { default as IconInstagram } from "./icon-instagram.svg"
+export { default as IconWhatapp } from "./icon-whatsapp.svg"
+export { default as UserLogo } from "./user-logo.svg"
