@@ -5,8 +5,8 @@ import * as Svg from './svgs'
 
 export function Navbar() {
   return (
-    <header className="m-auto w-full max-w-[1280px]">
-      <nav className="flex w-full items-center justify-between px-10 py-3">
+    <header className="m-auto w-full max-w-[1280px] px-10 py-3">
+      <nav className="flex w-full items-center justify-between">
         <Link href="/">
           <Image src={Img.KazaLogo} alt="logo" />
         </Link>
