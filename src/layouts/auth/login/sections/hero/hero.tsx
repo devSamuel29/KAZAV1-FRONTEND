@@ -1,12 +1,10 @@
-import Image from "next/image";
-import Link from "next/link";
-
-import * as Svg from "./svg";
-import Styles from "@/styles/LoginForm.module.css";
+import Link from 'next/link'
+import Styles from '@/styles/LoginForm.module.css'
+import * as Svg from './svg'
 
 export function Hero() {
-    return (
-        <div>
+  return (
+    <div>
       <div className={Styles.loginLinkRegister}>
         <p>
           Novo por aqui?
@@ -14,7 +12,7 @@ export function Hero() {
           Clique na seta ao lado para Cadastrar-se
         </p>
         <Link href="/auth/cadastrar">
-          <Image src={Svg.ArrowRight} alt="arrow-right" width={24} height={24} />
+          <Svg.ArrowRight />
         </Link>
       </div>
 
@@ -22,14 +20,24 @@ export function Hero() {
         <div className={Styles.loginTitle}>
           <h1>Já possuo uma conta na KazaRioBranco</h1>
           <p>
-            Acesse agora sua conta para acompanhar seus pedidos, ter ofertas
-            exclusivas e muito mais.
+            Acesse agora sua conta para acompanhar seus pedidos, ter ofertas exclusivas e
+            muito mais.
           </p>
         </div>
 
-        <input className={Styles.loginFormInput} type="email" placeholder="Digite seu email" name="email" />
+        <input
+          className={Styles.loginFormInput}
+          type="email"
+          placeholder="Digite seu email"
+          name="email"
+        />
 
-        <input className={Styles.loginFormInput} type="password" placeholder="Digite sua senha" name="password" />
+        <input
+          className={Styles.loginFormInput}
+          type="password"
+          placeholder="Digite sua senha"
+          name="password"
+        />
 
         <div className={Styles.rememberMeContainer}>
           <input type="checkbox" name="checkbox" className={Styles.rememberMeInput} />
@@ -45,5 +53,5 @@ export function Hero() {
         </div>
       </form>
     </div>
-    )
+  )
 }

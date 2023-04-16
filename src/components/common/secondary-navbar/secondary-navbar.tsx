@@ -1,7 +1,6 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import Styles from '@/styles/SecondaryNavbar.module.css'
-import * as Svg from '../svg'
+import * as Svg from './svgs'
 
 export function SecondaryNavbar() {
   return (
@@ -10,7 +9,7 @@ export function SecondaryNavbar() {
         <ul className={Styles.secondaryNavbarItems}>
           <li className={Styles.secondaryNavbarDropdownItem}>
             Acessórios de Banheiro
-            <Image src={Svg.ArrowDown} alt="arrow-down" width={12} height={8} />
+            <Svg.ArrowDown />
             <ul className={Styles.secondaryNavbarDropdownContent}>
               <li>
                 <Link href="#!">Bandejas</Link>
@@ -48,5 +47,3 @@ export function SecondaryNavbar() {
     </header>
   )
 }
-
-export default SecondaryNavbar
