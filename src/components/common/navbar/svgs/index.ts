@@ -1,3 +1,5 @@
 export { default as BurgerMenu } from './burger-menu.svg'
 export { default as Cart } from './cart.svg'
 export { default as User } from './user.svg'
+export { default as ArrowDown } from './arrow-down.svg'
+export { default as ArrowRight } from './arrow-right.svg'

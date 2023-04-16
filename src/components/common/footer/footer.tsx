@@ -24,7 +24,7 @@ function ListItemLink({ href, children }: ListItemLinkProps) {
 
 export function Footer() {
   return (
-    <footer className="bg-[#ecebeb]">
+    <footer className="bg-[#ecebeb] shadow-[0_-1px_0] shadow-[#dfdfdf]">
       <div className="m-auto flex w-full max-w-[1280px] justify-between px-10 py-12">
         <div className="flex max-w-[400px] flex-col gap-6">
           <button aria-label="Navegar para o topo" onClick={navigateToTop}>
@@ -70,6 +70,7 @@ export function Footer() {
               <ListItemLink href="#">Tech</ListItemLink>
               <ListItemLink href="#">Adventures</ListItemLink>
               <ListItemLink href="#">Music</ListItemLink>
+              <ListItemLink href="#">Music</ListItemLink>
             </ul>
           </div>
 
@@ -78,6 +79,7 @@ export function Footer() {
             <ul className="flex flex-col gap-3">
               <ListItemLink href="#">Tech</ListItemLink>
               <ListItemLink href="#">Adventures</ListItemLink>
+              <ListItemLink href="#">Music</ListItemLink>
               <ListItemLink href="#">Music</ListItemLink>
             </ul>
           </div>

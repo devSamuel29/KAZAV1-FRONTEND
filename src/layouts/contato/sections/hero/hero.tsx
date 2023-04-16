@@ -1,4 +1,4 @@
-import Styles from '@/styles/ContactForm.module.css'
+import Styles from '~/styles/ContactForm.module.css'
 
 export function Hero() {
   return (
