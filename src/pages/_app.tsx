@@ -7,13 +7,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Navbar />
-      <NextNProgress
-        color="#880000"
-        startPosition={0.3}
-        stopDelayMs={200}
-        height={3}
-        showOnShallow={true}
-      />
+      <NextNProgress color="#880000" stopDelayMs={0} />
       <Component {...pageProps} />
       <Footer />
     </>
