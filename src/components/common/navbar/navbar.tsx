@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import Styles from '@/styles/Navbar.module.css'
 import * as Img from './imgs'
 import * as Svg from './svgs'
+import Styles from '~/styles/Navbar.module.css'
 
 export function Navbar() {
   return (

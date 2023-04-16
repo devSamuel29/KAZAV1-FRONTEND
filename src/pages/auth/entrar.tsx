@@ -1,4 +1,4 @@
-import { Hero } from '~/layouts/auth/login/sections/'
+import { Hero } from '~/layouts/auth/entrar/sections'
 
 export default function LoginPage() {
   return <Hero />

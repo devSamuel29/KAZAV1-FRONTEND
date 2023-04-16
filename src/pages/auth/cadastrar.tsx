@@ -1,5 +1,5 @@
-import { Hero } from '~/layouts/auth/register/sections/hero/hero'
+import { Hero } from '~/layouts/auth/cadastrar/sections'
 
-export default function SignUpPage() {
+export default function CadastrarPage() {
   return <Hero />
 }

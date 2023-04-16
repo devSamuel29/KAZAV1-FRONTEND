@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import Styles from '@/styles/SecondaryNavbar.module.css'
 import * as Svg from './svgs'
+import Styles from '~/styles/SecondaryNavbar.module.css'
 
 export function SecondaryNavbar() {
   return (

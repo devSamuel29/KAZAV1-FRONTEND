@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import Styles from '@/styles/LoginForm.module.css'
 import * as Svg from './svg'
+import Styles from '~/styles/LoginForm.module.css'
 
 export function Hero() {
   return (
