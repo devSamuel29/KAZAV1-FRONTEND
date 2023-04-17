@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import * as Img from './imgs'
-import * as Svg from './svgs'
+import * as Img from './img'
+import * as Svg from './svg'
 
 function navigateToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' })

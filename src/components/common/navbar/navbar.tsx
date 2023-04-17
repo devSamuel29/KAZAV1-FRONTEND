@@ -2,8 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 import { useThrottle } from '~/hooks'
-import * as Img from './imgs'
-import * as Svg from './svgs'
+import * as Img from './img'
+import * as Svg from './svg'
 
 type ListItemLinkProps = {
   href: string
@@ -71,24 +71,6 @@ export function Navbar() {
 
   return (
     <>
-      <div className="border-y border-[rgba(0,0,0,0.025)] bg-[rgba(0,0,0,0.02)]">
-        <nav className="m-auto flex w-full max-w-[1280px] items-center justify-between px-10">
-          <div className="flex gap-8">
-            <NavbarListItem>Acessórios de Banheiro</NavbarListItem>
-            <NavbarListItem>Eletrodomésticos</NavbarListItem>
-            <NavbarListItem>Celulares</NavbarListItem>
-            <NavbarListItem>Celulares</NavbarListItem>
-          </div>
-
-          <Link
-            href="/contato"
-            className="text-base/[19px] font-medium text-black transition hover:text-primary"
-          >
-            Fale conosco
-          </Link>
-        </nav>
-      </div>
-
       <header
         ref={headerRef}
         className="shadow-red sticky top-0 border-b border-[#F4F4F4] bg-white"
@@ -157,6 +139,20 @@ export function Navbar() {
             </ul>
           </div>
         </nav>
+        <div className="border-y border-[rgba(0,0,0,0.025)] bg-[rgba(0,0,0,0.02)]">
+          <nav className="m-auto flex w-full max-w-[1280px] items-center justify-between px-10">
+            <div className="flex gap-8">
+              <NavbarListItem>Acessórios de Banheiro</NavbarListItem>
+            </div>
+
+            <Link
+              href="/contato"
+              className="text-base/[19px] font-medium text-black transition hover:text-primary"
+            >
+              Fale conosco
+            </Link>
+          </nav>
+        </div>
       </header>
     </>
   )
