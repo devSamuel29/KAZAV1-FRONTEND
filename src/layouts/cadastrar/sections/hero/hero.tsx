@@ -7,7 +7,7 @@ interface ProgressBarProps {
 
 function ProgressBar({ progressPercentage }: ProgressBarProps): JSX.Element {
   return (
-    <div className="my-5 h-3 w-full rounded-md bg-gray-300">
+    <div className="h-3 w-full rounded-md bg-gray-300">
       <div
         style={{ width: `${progressPercentage}%` }}
         className={`h-full ${
@@ -26,15 +26,17 @@ export function Hero() {
   return (
     <>
       <form
-        className="m-auto my-[75px] w-[800px] max-w-[80%] rounded-md bg-[rgba(235,235,235,0.8)] px-20 py-10"
+        className="m-auto my-20 w-[800px] max-w-[80%] space-y-3 rounded-md bg-[rgba(235,235,235,0.8)] px-20 py-10"
         onSubmit={handleSubmit}
         method="POST"
       >
-        <h1 className="text-2xl font-medium">Quero criar uma conta na KazaRioBranco</h1>
-        <p>
-          Crie sua conta na KazaRioBranco agora e acesse promoções exclusivas, fique por
-          dentro das novidades e acompanhe suas compras!
-        </p>
+        <div>
+          <h1 className="text-2xl font-medium">Quero criar uma conta na KazaRioBranco</h1>
+          <p>
+            Crie sua conta na KazaRioBranco agora e acesse promoções exclusivas, fique por
+            dentro das novidades e acompanhe suas compras!
+          </p>
+        </div>
         <ProgressBar progressPercentage={50} />
         <div className="flex flex-col space-y-4">
           <input

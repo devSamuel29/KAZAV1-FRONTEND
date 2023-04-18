@@ -1,6 +1,9 @@
+import { Slider } from "./slider";
+
 export function Hero() {
   return (
-    <div>
+    <div className="my-10">
+      <Slider />
     </div>
   )
 }

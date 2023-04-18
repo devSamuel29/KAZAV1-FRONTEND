@@ -1,57 +1,59 @@
 import Link from 'next/link'
 import * as Svg from './svg'
-import Styles from '~/styles/LoginForm.module.css'
 
 export function Hero() {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+  }
   return (
-    <div>
-      <div className={Styles.loginLinkRegister}>
+    <>
+      <div className="flex items-center justify-end">
         <p>
           Novo por aqui?
           <br />
           Clique na seta ao lado para Cadastrar-se
         </p>
-        <Link href="/auth/cadastrar">
+        <Link href="/cadastrar">
           <Svg.ArrowRight />
         </Link>
       </div>
 
-      <form className={Styles.loginContainer} method="POST">
-        <div className={Styles.loginTitle}>
-          <h1>Já possuo uma conta na KazaRioBranco</h1>
+      <form
+        className="m-auto my-20 flex w-[800px] max-w-[80%] flex-col space-y-3 rounded-md bg-[rgba(235,235,235,0.8)] px-20 py-10"
+        method="POST"
+        onSubmit={handleSubmit}
+      >
+        <div>
+          <h1 className="text-xl font-medium">Já possuo uma conta na KazaRioBranco</h1>
           <p>
             Acesse agora sua conta para acompanhar seus pedidos, ter ofertas exclusivas e
             muito mais.
           </p>
         </div>
-
         <input
-          className={Styles.loginFormInput}
+          className="rounded-[5px] px-4 py-2.5 text-[14px]/[17px] caret-primary outline-none focus:shadow-[0_0_0_2px] focus:shadow-primary"
           type="email"
           placeholder="Digite seu email"
           name="email"
         />
 
         <input
-          className={Styles.loginFormInput}
+          className="rounded-[5px] px-4 py-2.5 text-[14px]/[17px] caret-primary outline-none focus:shadow-[0_0_0_2px] focus:shadow-primary"
           type="password"
           placeholder="Digite sua senha"
           name="password"
         />
 
-        <div className={Styles.rememberMeContainer}>
-          <input type="checkbox" name="checkbox" className={Styles.rememberMeInput} />
-          <label htmlFor="checkbox">Lembre de mim</label>
-        </div>
-
-        <div className={Styles.redirectContainer}>
-          <button type="submit" className={Styles.btnSubmit}>
-            Entrar
-          </button>
-
-          <Link href="#">Esqueceu sua senha?</Link>
-        </div>
+        <Link href="#" className="text-blue-600 hover:underline">
+          Esqueceu sua senha?
+        </Link>
+        <button
+          type="submit"
+          className="w-full rounded-md bg-primary p-2 font-medium text-white transition hover:brightness-[0.85]"
+        >
+          Entrar
+        </button>
       </form>
-    </div>
+    </>
   )
 }
