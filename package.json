@@ -9,13 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.1.0",
     "clsx": "^1.2.1",
     "keen-slider": "^6.8.5",
     "next": "13.3.0",
     "nextjs-progressbar": "^0.0.16",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tailwind-merge": "^1.12.0"
+    "react-hook-form": "^7.43.9",
+    "tailwind-merge": "^1.12.0",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@svgr/webpack": "^7.0.0",
