@@ -1,4 +1,37 @@
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import * as Svg from './svg'
+
+const contactFormSchema = z.object({
+  name: z
+    .string()
+    .nonempty('Você deve inserir seu nome')
+    .min(5, 'Você deve escrever pelo menos seu nome e sobrenome'),
+  email: z
+    .string()
+    .nonempty('Você deve inserir seu email')
+    .email('Formato de email inválido'),
+  phone: z.string().nonempty('Você deve inserir seu número de telefone').length(15),
+  reason: z.string().nonempty('Você deve inserir um motivo válido'),
+  description: z.string().nonempty('Você deve descrever a descrição'),
+})
+
+type ContactFormSchema = z.infer<typeof contactFormSchema>
+
 export function Hero() {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<ContactFormSchema>({
+    resolver: zodResolver(contactFormSchema),
+  })
+
+  const onSubmit = async () => {
+    return
+  }
+
   return (
     <div className="my-24 flex items-center justify-center space-x-14">
       <iframe
@@ -11,6 +44,7 @@ export function Hero() {
 
       <form
         className="flex w-96 max-w-[80%] flex-col space-y-3 rounded-md bg-[rgba(235,235,235,0.8)] p-10"
+        onSubmit={handleSubmit(onSubmit)}
         id="contact-form"
         method="POST"
       >
@@ -19,53 +53,73 @@ export function Hero() {
         <input
           className="rounded-[5px] px-4 py-2.5 text-[14px]/[17px] caret-primary outline-none focus:shadow-[0_0_0_2px] focus:shadow-primary"
           type="text"
-          id="name"
           placeholder="Digite seu nome completo..."
+          {...register('name')}
         />
-        {/* <i className="fas fa-exclamation-circle"></i>
-          <i className="fas fa-check-circle"></i>
-          <small>Mensagem de erro</small> */}
+        {errors.name && (
+          <div className="flex items-center space-x-2 text-primary">
+            <Svg.Incorrect />
+            <span>{errors.name.message}</span>
+          </div>
+        )}
 
         <input
           className="rounded-[5px] px-4 py-2.5 text-[14px]/[17px] caret-primary outline-none focus:shadow-[0_0_0_2px] focus:shadow-primary"
           type="text"
-          id="email"
           placeholder="Digite seu email..."
+          {...register('email')}
         />
-        {/* <i className="fas fa-exclamation-circle"></i>
-          <i className="fas fa-check-circle"></i>
-          <small>Mensagem de erro</small> */}
+        {errors.email && (
+          <div className="flex items-center space-x-2 text-primary">
+            <Svg.Incorrect />
+            <span>{errors.email.message}</span>
+          </div>
+        )}
 
         <input
           className="rounded-[5px] px-4 py-2.5 text-[14px]/[17px] caret-primary outline-none focus:shadow-[0_0_0_2px] focus:shadow-primary"
           type="text"
-          id="phone"
+          maxLength={15}
           placeholder="Digite seu número de telefone..."
+          {...register('phone')}
         />
-        {/* <i className="fas fa-exclamation-circle"></i>
-          <i className="fas fa-check-circle"></i>
-          <small>Mensagem de erro</small> */}
+        {errors.phone && (
+          <div className="flex items-center space-x-2 text-primary">
+            <Svg.Incorrect />
+            <span>{errors.phone.message}</span>
+          </div>
+        )}
 
         <select
           className="rounded-[5px] px-4 py-2.5 text-[14px]/[17px] caret-primary outline-none focus:shadow-[0_0_0_2px] focus:shadow-primary"
-          id="reason"
+          {...register('reason')}
         >
-          <option value="" disabled>
+          <option value="" disabled selected>
             Selecione um motivo
           </option>
           <option value="suporte">Suporte</option>
           <option value="feedback">Feedback</option>
           <option value="outro">Outro</option>
         </select>
+        {errors.reason && (
+          <div className="flex items-center space-x-2 text-primary">
+            <Svg.Incorrect />
+            <span>{errors.reason.message}</span>
+          </div>
+        )}
 
         <textarea
           className="h-20 resize-none rounded-[5px] px-4 py-2.5 text-[14px]/[17px] caret-primary outline-none focus:shadow-[0_0_0_2px] focus:shadow-primary"
           id="description"
           placeholder="Digite aqui..."
+          {...register('description')}
         ></textarea>
-        {/* <i className="fas fa-exclamation-circle"></i>
-          <i className="fas fa-check-circle"></i>
-          <small>Mensagem de erro</small> */}
+        {errors.description && (
+          <div className="flex items-center space-x-2 text-primary">
+            <Svg.Incorrect />
+            <span>{errors.description.message}</span>
+          </div>
+        )}
 
         <button
           type="submit"
