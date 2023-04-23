@@ -30,7 +30,7 @@ type NavbarListItemProps = {
 
 function NavbarListItem({ children }: NavbarListItemProps) {
   return (
-    <div className="group relative z-10 flex flex-col items-center">
+    <div className="group relative flex flex-col items-center">
       <button className="h-full py-1">{children}</button>
       <div className="h-0.5 w-full rounded-full bg-transparent group-hover:bg-primary" />
       <ul className="invisible absolute bottom-0 flex translate-y-full flex-col gap-4 whitespace-nowrap rounded-lg bg-[#F9F9F9] px-6 py-6 opacity-0 shadow-md transition duration-300 group-hover:visible group-hover:opacity-100">
@@ -73,7 +73,7 @@ export function Navbar() {
     <>
       <header
         ref={headerRef}
-        className="shadow-red sticky top-0 border-b border-[#F4F4F4] bg-white"
+        className="shadow-red sticky top-0 z-10 border-b border-[#F4F4F4] bg-white"
       >
         <nav className="m-auto flex w-full max-w-[1280px] items-center justify-between px-10 py-3">
           <Link href="/">

@@ -7,7 +7,6 @@ import * as Img from './img'
 export function Slider() {
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
-
     slideChanged() {
       return
     },
