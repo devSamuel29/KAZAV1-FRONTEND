@@ -3,7 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { ProgressBar } from './progress-bar'
-import { FirstStep } from './steps'
+import { FirstStep, FourthStep, SecondStep, ThirdStep } from './steps'
 import * as Svg from './svg'
 
 const formFieldsShema = z
@@ -86,7 +86,7 @@ export function Hero() {
     mode: 'onChange',
   })
 
-  const [formStep, setFormStep] = useState<number>(0)
+  const [formStep, setFormStep] = useState<number>(1)
 
   async function nextStep() {
     const stepIsValid = await trigger(steps[formStep])
@@ -113,7 +113,7 @@ export function Hero() {
     })
 
     if (result.status === 200) {
-      setFormStep(0)
+      setFormStep(1)
       reset()
     }
   }
@@ -134,82 +134,94 @@ export function Hero() {
 
         <ProgressBar progressPercentage={formStep} />
 
-        <div className="hidden flex-col space-y-4">
-          {formStep === 1 && <FirstStep errors={errors} register={steps[formStep]} />}
-
-          <button
-            type="button"
-            className="rounded-md bg-primary p-2 text-sm font-medium text-white transition hover:brightness-[0.85]"
-            onClick={nextStep}
-          >
-            Próximo
-          </button>
+        <div className="flex flex-col space-y-4">
+          {formStep === 1 && (
+            <>
+              <FirstStep errors={errors} register={register} />
+              <button
+                type="button"
+                className="w-full rounded-md bg-primary p-2 text-sm font-medium text-white transition hover:brightness-[0.85]"
+                onClick={nextStep}
+              >
+                Próximo
+              </button>
+            </>
+          )}
         </div>
 
-        <div className="hidden flex-col space-y-4">
-          {formStep === 2 && <SecondStep />}
+        <div className="flexx flex-col space-y-4">
+          {formStep === 2 && (
+            <>
+              <SecondStep errors={errors} register={register} />
+              <div className="flex flex-row space-x-5 text-sm font-medium text-white">
+                <button
+                  type="button"
+                  className="w-full rounded-md bg-primary p-2 transition hover:brightness-[0.85]"
+                  onClick={previousStep}
+                >
+                  Anterior
+                </button>
 
-          <div className="flex flex-row space-x-5 text-sm font-medium text-white">
-            <button
-              type="button"
-              className="w-full rounded-md bg-primary p-2 transition hover:brightness-[0.85]"
-              onClick={previousStep}
-            >
-              Anterior
-            </button>
-
-            <button
-              type="button"
-              className="w-full rounded-md bg-primary p-2 transition hover:brightness-[0.85]"
-              onClick={nextStep}
-            >
-              Próximo
-            </button>
-          </div>
+                <button
+                  type="button"
+                  className="w-full rounded-md bg-primary p-2 transition hover:brightness-[0.85]"
+                  onClick={nextStep}
+                >
+                  Próximo
+                </button>
+              </div>
+            </>
+          )}
         </div>
 
-        <div className="hidden flex-col space-y-4">
-          {formStep === 3 && <ThirdStep />}
+        <div className="flex flex-col space-y-4">
+          {formStep === 3 && (
+            <>
+              <ThirdStep errors={errors} register={register} />
+              <div className="flex flex-row space-x-5 text-sm font-medium text-white">
+                <button
+                  type="button"
+                  className="w-full rounded-md bg-primary p-2 transition hover:brightness-[0.85]"
+                  onClick={previousStep}
+                >
+                  Anterior
+                </button>
 
-          <div className="flex flex-row space-x-5 text-sm font-medium text-white">
-            <button
-              type="button"
-              className="w-full rounded-md bg-primary p-2 transition hover:brightness-[0.85]"
-              onClick={previousStep}
-            >
-              Anterior
-            </button>
-
-            <button
-              type="button"
-              className="w-full rounded-md bg-primary p-2 transition hover:brightness-[0.85]"
-              onClick={nextStep}
-            >
-              Próximo
-            </button>
-          </div>
+                <button
+                  type="button"
+                  className="w-full rounded-md bg-primary p-2 transition hover:brightness-[0.85]"
+                  onClick={nextStep}
+                >
+                  Próximo
+                </button>
+              </div>
+            </>
+          )}
         </div>
 
-        <div className="hidden flex-col space-y-4">
-          {formStep === 4 && <FourthStep />}
+        <div className="flex flex-col space-y-4">
+          {formStep === 4 && (
+            <>
+              <FourthStep errors={errors} register={register} />
+              <div className="flex flex-row space-x-5 text-sm font-medium text-white">
+                <button
+                  type="button"
+                  className="w-full rounded-md bg-primary p-2 transition hover:brightness-[0.85]"
+                  onClick={previousStep}
+                >
+                  Anterior
+                </button>
 
-          <div className="flex flex-row space-x-5 text-sm font-medium text-white">
-            <button
-              type="button"
-              className="w-full rounded-md bg-primary p-2 transition hover:brightness-[0.85]"
-              onClick={previousStep}
-            >
-              Anterior
-            </button>
-
-            <button
-              type="submit"
-              className="w-full rounded-md bg-primary p-2 transition hover:brightness-[0.85]"
-              onClick={handleSubmit(onSubmit)}
-            >
-              Enviar
-            </button>
-          </div>
+                <button
+                  type="submit"
+                  className="w-full rounded-md bg-primary p-2 transition hover:brightness-[0.85]"
+                  onClick={handleSubmit(onSubmit)}
+                >
+                  Enviar
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </form>
     </>
