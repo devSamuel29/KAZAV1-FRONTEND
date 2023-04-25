@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { ProgressBar } from './progress-bar'
 import * as Svg from './svg'
+import { FirstStep } from './steps'
 
 const formFieldsShema = z
   .object({
