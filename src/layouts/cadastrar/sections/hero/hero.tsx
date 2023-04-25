@@ -3,8 +3,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { ProgressBar } from './progress-bar'
-import * as Svg from './svg'
 import { FirstStep } from './steps'
+import * as Svg from './svg'
 
 const formFieldsShema = z
   .object({
@@ -88,25 +88,6 @@ export function Hero() {
 
   const [formStep, setFormStep] = useState<number>(0)
 
-  const stepRef = useRef<HTMLDivElement | null>(null)
-
-  useEffect(() => {
-    if (stepRef.current) {
-      const previousStepRef = document.getElementById(
-        `step-${formStep - 1}`
-      ) as HTMLDivElement
-
-      if (previousStepRef && previousStepRef.className.includes('flex')) {
-        previousStepRef.className = previousStepRef.className.replace('flex', 'hidden')
-      }
-
-      stepRef.current = document.getElementById(`step-${formStep}`) as HTMLDivElement
-      if (stepRef.current.className.includes('hidden')) {
-        stepRef.current.className = stepRef.current.className.replace('hidden', 'flex')
-      }
-    }
-  }, [formStep])
-
   async function nextStep() {
     const stepIsValid = await trigger(steps[formStep])
     if (stepIsValid) {
@@ -116,17 +97,6 @@ export function Hero() {
 
   async function previousStep() {
     setFormStep(currentStep => currentStep - 1)
-
-    if (stepRef.current && stepRef.current.className.includes('flex')) {
-      stepRef.current.className = stepRef.current.className.replace('flex', 'hidden')
-    }
-
-    const previousStepRef = document.getElementById(
-      `step-${previousStep}`
-    ) as HTMLDivElement
-    if (previousStepRef && previousStepRef.className.includes('hidden')) {
-      previousStepRef.className = previousStepRef.className.replace('hidden', 'flex')
-    }
   }
 
   async function onSubmit(values: FormFieldsShema) {
@@ -164,32 +134,8 @@ export function Hero() {
 
         <ProgressBar progressPercentage={formStep} />
 
-        <div ref={stepRef} id="step-0" className="hidden flex-col space-y-4">
-          <input
-            type="text"
-            className="rounded-[5px] px-4 py-2.5 text-[14px]/[17px] caret-primary outline-none focus:shadow-[0_0_0_2px] focus:shadow-primary"
-            placeholder="Digite seu nome..."
-            {...register('firstname')}
-          />
-          {errors.firstname && (
-            <div className="flex items-center space-x-2 text-primary">
-              <Svg.Incorrect />
-              <span>{errors.firstname.message}</span>
-            </div>
-          )}
-
-          <input
-            type="text"
-            className="rounded-[5px] px-4 py-2.5 text-[14px]/[17px] caret-primary outline-none focus:shadow-[0_0_0_2px] focus:shadow-primary"
-            placeholder="Digite seu sobrenome..."
-            {...register('lastname')}
-          />
-          {errors.lastname && (
-            <div className="flex items-center space-x-2 text-primary">
-              <Svg.Incorrect />
-              <span>{errors.lastname.message}</span>
-            </div>
-          )}
+        <div className="hidden flex-col space-y-4">
+          {formStep === 1 && <FirstStep errors={errors} register={steps[formStep]} />}
 
           <button
             type="button"
@@ -200,36 +146,8 @@ export function Hero() {
           </button>
         </div>
 
-        <div ref={stepRef} id="step-1" className="hidden flex-col space-y-4">
-          <input
-            type="text"
-            className="rounded-[5px] px-4 py-2.5 text-[14px]/[17px] caret-primary outline-none focus:shadow-[0_0_0_2px] focus:shadow-primary"
-            placeholder="Digite seu CPF..."
-            data-mask="000.000.000-00"
-            maxLength={14}
-            {...register('cpf')}
-          />
-          {errors.cpf && (
-            <div className="flex items-center space-x-2 text-primary">
-              <Svg.Incorrect />
-              <span>{errors.cpf.message}</span>
-            </div>
-          )}
-
-          <input
-            type="text"
-            className="rounded-[5px] px-4 py-2.5 text-[14px]/[17px] caret-primary outline-none focus:shadow-[0_0_0_2px] focus:shadow-primary"
-            placeholder="Digite seu n° de telefone..."
-            data-mask="(00) 00000-0000"
-            maxLength={15}
-            {...register('phone')}
-          />
-          {errors.phone && (
-            <div className="flex items-center space-x-2 text-primary">
-              <Svg.Incorrect />
-              <span>{errors.phone.message}</span>
-            </div>
-          )}
+        <div className="hidden flex-col space-y-4">
+          {formStep === 2 && <SecondStep />}
 
           <div className="flex flex-row space-x-5 text-sm font-medium text-white">
             <button
@@ -250,32 +168,8 @@ export function Hero() {
           </div>
         </div>
 
-        <div ref={stepRef} id="step-2" className="hidden flex-col space-y-4">
-          <input
-            type="text"
-            className="rounded-[5px] px-4 py-2.5 text-[14px]/[17px] caret-primary outline-none focus:shadow-[0_0_0_2px] focus:shadow-primary"
-            placeholder="Digite seu email..."
-            {...register('email')}
-          />
-          {errors.email && (
-            <div className="flex items-center space-x-2 text-primary">
-              <Svg.Incorrect />
-              <span>{errors.email.message}</span>
-            </div>
-          )}
-
-          <input
-            type="text"
-            className="focus:shadow-[0_0_0_2px]focus:shadow-primary rounded-[5px] px-4 py-2.5 text-[14px]/[17px] caret-primary outline-none"
-            placeholder="Digite novamente seu email..."
-            {...register('emailConfirmation')}
-          />
-          {errors.emailConfirmation && (
-            <div className="flex items-center space-x-2 text-primary">
-              <Svg.Incorrect />
-              <span>{errors.emailConfirmation.message}</span>
-            </div>
-          )}
+        <div className="hidden flex-col space-y-4">
+          {formStep === 3 && <ThirdStep />}
 
           <div className="flex flex-row space-x-5 text-sm font-medium text-white">
             <button
@@ -296,32 +190,8 @@ export function Hero() {
           </div>
         </div>
 
-        <div ref={stepRef} id="step-3" className="hidden flex-col space-y-4">
-          <input
-            type="password"
-            className="rounded-[5px] px-4 py-2.5 text-[14px]/[17px] caret-primary outline-none focus:shadow-[0_0_0_2px] focus:shadow-primary"
-            placeholder="Digite sua senha..."
-            {...register('password')}
-          />
-          {errors.password && (
-            <div className="flex items-center space-x-2 text-primary">
-              <Svg.Incorrect />
-              <span>{errors.password.message}</span>
-            </div>
-          )}
-
-          <input
-            type="password"
-            className="rounded-[5px] px-4 py-2.5 text-[14px]/[17px] caret-primary outline-none focus:shadow-[0_0_0_2px] focus:shadow-primary"
-            placeholder="Digite sua senha novamente..."
-            {...register('passwordConfirmation')}
-          />
-          {errors.passwordConfirmation && (
-            <div className="flex items-center space-x-2 text-primary">
-              <Svg.Incorrect />
-              <span>{errors.passwordConfirmation.message}</span>
-            </div>
-          )}
+        <div className="hidden flex-col space-y-4">
+          {formStep === 4 && <FourthStep />}
 
           <div className="flex flex-row space-x-5 text-sm font-medium text-white">
             <button
