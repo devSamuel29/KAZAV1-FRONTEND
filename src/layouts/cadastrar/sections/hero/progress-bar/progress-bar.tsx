@@ -8,7 +8,7 @@ export function ProgressBar({ progressPercentage }: ProgressBarProps): JSX.Eleme
   const width = progressArrayPercentage[progressIndex]
 
   return (
-    <div className="transition-width h-3 w-full rounded-md bg-gray-300">
+    <div className="transition-width mb-3 h-3 w-full rounded-md bg-gray-300">
       <div
         style={{ width: `${width}%` }}
         className="h-full rounded-md bg-primary duration-500 ease-in-out"
