@@ -3,16 +3,15 @@ interface ProgressBarProps {
 }
 
 export function ProgressBar({ progressPercentage }: ProgressBarProps): JSX.Element {
-  if (progressPercentage === 1) {
-    progressPercentage = 0
-  } else {
-    progressPercentage = progressPercentage * 33.33
-  }
+  const progressArrayPercentage = [0, 33.33, 66.66, 100]
+  const progressIndex = progressPercentage - 1
+  const width = progressArrayPercentage[progressIndex]
+
   return (
-    <div className="h-3 w-full rounded-md bg-gray-300">
+    <div className="transition-width h-3 w-full rounded-md bg-gray-300">
       <div
-        style={{ width: `${progressPercentage}%` }}
-        className="h-full rounded-md bg-primary"
+        style={{ width: `${width}%` }}
+        className="h-full rounded-md bg-primary duration-500 ease-in-out"
       ></div>
     </div>
   )

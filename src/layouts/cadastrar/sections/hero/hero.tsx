@@ -1,10 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { ProgressBar } from './progress-bar'
 import { FirstStep, FourthStep, SecondStep, ThirdStep } from './steps'
-import * as Svg from './svg'
 
 const formFieldsShema = z
   .object({
@@ -68,10 +67,10 @@ function isValidPhone(data: string): boolean {
 type FormFieldsShema = z.infer<typeof formFieldsShema>
 
 const steps: Record<number, Partial<keyof FormFieldsShema>[]> = {
-  0: ['firstname', 'lastname'],
-  1: ['cpf', 'phone'],
-  2: ['email', 'emailConfirmation'],
-  3: ['password', 'passwordConfirmation'],
+  1: ['firstname', 'lastname'],
+  2: ['cpf', 'phone'],
+  3: ['email', 'emailConfirmation'],
+  4: ['password', 'passwordConfirmation'],
 }
 
 export function Hero() {
@@ -90,6 +89,7 @@ export function Hero() {
 
   async function nextStep() {
     const stepIsValid = await trigger(steps[formStep])
+    console.log(steps[formStep])
     if (stepIsValid) {
       setFormStep(currentStep => currentStep + 1)
     }
@@ -149,7 +149,7 @@ export function Hero() {
           )}
         </div>
 
-        <div className="flexx flex-col space-y-4">
+        <div className="flex flex-col space-y-4">
           {formStep === 2 && (
             <>
               <SecondStep errors={errors} register={register} />
