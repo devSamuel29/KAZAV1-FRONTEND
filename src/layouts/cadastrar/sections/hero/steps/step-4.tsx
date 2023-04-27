@@ -1,28 +1,5 @@
-import { FieldErrorsImpl, UseFormRegister } from 'react-hook-form'
+import { StepProps } from './istep-props'
 import * as Svg from './svg'
-
-interface StepProps {
-  register: UseFormRegister<{
-    firstname: string
-    lastname: string
-    cpf: string
-    phone: string
-    email: string
-    emailConfirmation: string
-    password: string
-    passwordConfirmation: string
-  }>
-  errors: FieldErrorsImpl<{
-    firstname: string
-    lastname: string
-    cpf: string
-    phone: string
-    email: string
-    emailConfirmation: string
-    password: string
-    passwordConfirmation: string
-  }>
-}
 
 export function FourthStep({ errors, register }: StepProps) {
   return (
@@ -30,6 +7,7 @@ export function FourthStep({ errors, register }: StepProps) {
       <input
         type="password"
         className="rounded-[5px] px-4 py-2.5 text-[14px]/[17px] caret-primary outline-none focus:shadow-[0_0_0_2px] focus:shadow-primary"
+        maxLength={16}
         placeholder="Digite sua senha..."
         {...register('password')}
       />
@@ -43,6 +21,7 @@ export function FourthStep({ errors, register }: StepProps) {
       <input
         type="password"
         className="rounded-[5px] px-4 py-2.5 text-[14px]/[17px] caret-primary outline-none focus:shadow-[0_0_0_2px] focus:shadow-primary"
+        maxLength={16}
         placeholder="Digite sua senha novamente..."
         {...register('passwordConfirmation')}
       />

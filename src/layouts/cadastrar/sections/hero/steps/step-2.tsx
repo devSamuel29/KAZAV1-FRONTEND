@@ -1,38 +1,18 @@
-import { FieldErrorsImpl, UseFormRegister } from 'react-hook-form'
+import InputMask from 'react-input-mask'
+import { StepProps } from './istep-props'
 import * as Svg from './svg'
 
-interface StepProps {
-  register: UseFormRegister<{
-    firstname: string
-    lastname: string
-    cpf: string
-    phone: string
-    email: string
-    emailConfirmation: string
-    password: string
-    passwordConfirmation: string
-  }>
-  errors: FieldErrorsImpl<{
-    firstname: string
-    lastname: string
-    cpf: string
-    phone: string
-    email: string
-    emailConfirmation: string
-    password: string
-    passwordConfirmation: string
-  }>
-}
-
-export function SecondStep({ errors, register }: StepProps) {
+export function SecondStep({ value, onChange, errors, register }: StepProps) {
   return (
     <>
-      <input
+      <InputMask
         type="text"
         className="rounded-[5px] px-4 py-2.5 text-[14px]/[17px] caret-primary outline-none focus:shadow-[0_0_0_2px] focus:shadow-primary"
+        value={value}
+        mask="999.999.999-99"
         placeholder="Digite seu CPF..."
-        data-mask="000.000.000-00"
-        maxLength={14}
+        // value={value}
+        // onChange={onChange}
         {...register('cpf')}
       />
       {errors.cpf && (
@@ -42,12 +22,12 @@ export function SecondStep({ errors, register }: StepProps) {
         </div>
       )}
 
-      <input
+      <InputMask
         type="text"
         className="rounded-[5px] px-4 py-2.5 text-[14px]/[17px] caret-primary outline-none focus:shadow-[0_0_0_2px] focus:shadow-primary"
+        mask="(99) 99999-9999"
         placeholder="Digite seu n° de telefone..."
         data-mask="(00) 00000-0000"
-        maxLength={15}
         {...register('phone')}
       />
       {errors.phone && (

@@ -1,33 +1,38 @@
 import { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { cpf } from 'cpf-cnpj-validator'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { ProgressBar } from './progress-bar'
 import { FirstStep, FourthStep, SecondStep, ThirdStep } from './steps'
+
+const nameRegex = /^[a-zA-ZÀ-úÇç]+$/
+const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d.*\d).+$/
 
 const formFieldsShema = z
   .object({
     firstname: z
       .string()
       .nonempty('Você deve inserir seu nome')
-      .min(3, 'O nome deve conter no mínimo 3 caracteres'),
+      .min(3, 'O nome deve conter no mínimo 3 caracteres')
+      .regex(nameRegex, 'Caracteres inválidos!'),
     lastname: z
       .string()
       .nonempty('Você deve inserir seu sobrenome')
-      .min(3, 'O sobrenome deve conter no mínimo 3 caracteres'),
+      .min(3, 'O sobrenome deve conter no mínimo 3 caracteres')
+      .regex(nameRegex, 'Caracteres inválidos!'),
     cpf: z
       .string()
       .nonempty('Você deve inserir seu CPF')
       .length(14, 'O CPF deve conter 11 números, não tente inserir pontos ou hífen')
-      .refine(value => isValidCpf(value), 'CPF inválido'),
+      .refine(value => cpf.isValid(value), 'CPF inválido'),
     phone: z
       .string()
       .nonempty('Você deve inserir seu número de telefone!')
       .length(
         15,
         'O nr de telefone de conter apenas números, não insira quaisquer outros caracteres'
-      )
-      .refine(value => isValidPhone(value), 'Número de telefone inválido'),
+      ),
     email: z
       .string()
       .nonempty('Você deve inserir seu email')
@@ -39,13 +44,15 @@ const formFieldsShema = z
     password: z
       .string()
       .nonempty('Você deve inserir sua senha')
-      .min(8, 'A senha deve ter no mínimo 6 caracteres')
-      .max(16, 'A senha não deve ter mais do que 16 caracteres'),
+      .min(8, 'A senha deve ter no mínimo 8 caracteres')
+      .regex(
+        passwordRegex,
+        'A senha deve conter uma letra maiúscula e no mínimo dois números'
+      ),
     passwordConfirmation: z
       .string()
       .nonempty('Você confirmar sua senha novamente')
-      .min(8)
-      .max(16),
+      .min(8, 'A confirmação de senha deve ter no mínimo 8 caracteres'),
   })
   .refine(data => data.email === data.emailConfirmation, {
     message: 'Os emails devem ser iguais',
@@ -55,14 +62,6 @@ const formFieldsShema = z
     message: 'As senhas devem ser iguais',
     path: ['passwordConfirmation'],
   })
-
-function isValidCpf(data: string): boolean {
-  return true
-}
-
-function isValidPhone(data: string): boolean {
-  return true
-}
 
 type FormFieldsShema = z.infer<typeof formFieldsShema>
 
