@@ -26,9 +26,10 @@ export function Hero() {
     handleSubmit,
   } = useForm<ContactFormSchema>({
     resolver: zodResolver(contactFormSchema),
+    mode: 'onChange',
   })
 
-  const onSubmit = async () => {
+  async function onSubmit() {
     return
   }
 

@@ -21,26 +21,13 @@ const formFieldsShema = z
       .nonempty('Você deve inserir seu sobrenome')
       .min(3, 'O sobrenome deve conter no mínimo 3 caracteres')
       .regex(nameRegex, 'Caracteres inválidos!'),
-    cpf: z
-      .string()
-      .nonempty('Você deve inserir seu CPF')
-      .length(14, 'O CPF deve conter 11 números, não tente inserir pontos ou hífen')
-      .refine(value => cpf.isValid(value), 'CPF inválido'),
-    phone: z
-      .string()
-      .nonempty('Você deve inserir seu número de telefone!')
-      .length(
-        15,
-        'O nr de telefone de conter apenas números, não insira quaisquer outros caracteres'
-      ),
+    cpf: z.string().refine(value => cpf.isValid(value), 'CPF inválido'),
+    phone: z.string().nonempty('Você deve inserir seu número de telefone!'),
     email: z
       .string()
       .nonempty('Você deve inserir seu email')
       .email('Formato de email inválido'),
-    emailConfirmation: z
-      .string()
-      .nonempty('Você deve confirmar seu email')
-      .email('Formato de email inválido'),
+    emailConfirmation: z.string().nonempty('Você deve confirmar seu email'),
     password: z
       .string()
       .nonempty('Você deve inserir sua senha')
@@ -81,7 +68,7 @@ export function Hero() {
     trigger,
   } = useForm<FormFieldsShema>({
     resolver: zodResolver(formFieldsShema),
-    mode: 'onChange',
+    mode: 'onTouched',
   })
 
   const [formStep, setFormStep] = useState<number>(1)

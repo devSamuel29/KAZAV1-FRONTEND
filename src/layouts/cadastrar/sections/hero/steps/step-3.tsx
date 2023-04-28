@@ -21,6 +21,7 @@ export function ThirdStep({ errors, register }: StepProps) {
         type="text"
         className="focus:shadow-[0_0_0_2px]focus:shadow-primary rounded-[5px] px-4 py-2.5 text-[14px]/[17px] caret-primary outline-none"
         placeholder="Digite novamente seu email..."
+        autoComplete="off"
         {...register('emailConfirmation')}
       />
       {errors.emailConfirmation && (
