@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
+import axios from 'axios'
 import { cpf } from 'cpf-cnpj-validator'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -13,40 +14,44 @@ const formFieldsShema = z
   .object({
     firstname: z
       .string()
-      .nonempty('Você deve inserir seu nome')
-      .min(3, 'O nome deve conter no mínimo 3 caracteres')
+      .nonempty('Você deve inserir seu nome!')
+      .min(3, 'O nome deve conter no mínimo 3 caracteres!')
       .regex(nameRegex, 'Caracteres inválidos!'),
     lastname: z
       .string()
-      .nonempty('Você deve inserir seu sobrenome')
-      .min(3, 'O sobrenome deve conter no mínimo 3 caracteres')
+      .nonempty('Você deve inserir seu sobrenome!')
+      .min(3, 'O sobrenome deve conter no mínimo 3 caracteres!')
       .regex(nameRegex, 'Caracteres inválidos!'),
-    cpf: z.string().refine(value => cpf.isValid(value), 'CPF inválido'),
-    phone: z.string().nonempty('Você deve inserir seu número de telefone!'),
+    cpf: z.string().refine(value => cpf.isValid(value), 'CPF inválido!'),
+    phone: z
+      .string()
+      .nonempty('Você deve inserir seu número de telefone!')
+      .min(13, 'Insira o número de telefone corretamente!')
+      .refine(value => validatePhone(value), 'Número de telefone inválido!'),
     email: z
       .string()
-      .nonempty('Você deve inserir seu email')
-      .email('Formato de email inválido'),
-    emailConfirmation: z.string().nonempty('Você deve confirmar seu email'),
+      .nonempty('Você deve inserir seu email!')
+      .email('Formato de email inválido!'),
+    emailConfirmation: z.string().nonempty('Você deve confirmar seu email!'),
     password: z
       .string()
-      .nonempty('Você deve inserir sua senha')
-      .min(8, 'A senha deve ter no mínimo 8 caracteres')
+      .nonempty('Você deve inserir sua senha!')
+      .min(8, 'A senha deve ter no mínimo 8 caracteres!')
       .regex(
         passwordRegex,
-        'A senha deve conter uma letra maiúscula e no mínimo dois números'
+        'A senha deve conter uma letra maiúscula e no mínimo dois números!'
       ),
     passwordConfirmation: z
       .string()
-      .nonempty('Você confirmar sua senha novamente')
-      .min(8, 'A confirmação de senha deve ter no mínimo 8 caracteres'),
+      .nonempty('Você confirmar sua senha novamente!')
+      .min(8, 'A confirmação de senha deve ter no mínimo 8 caracteres!'),
   })
   .refine(data => data.email === data.emailConfirmation, {
-    message: 'Os emails devem ser iguais',
+    message: 'Os emails devem ser iguais!',
     path: ['emailConfirmation'],
   })
   .refine(data => data.password === data.passwordConfirmation, {
-    message: 'As senhas devem ser iguais',
+    message: 'As senhas devem ser iguais!',
     path: ['passwordConfirmation'],
   })
 
@@ -57,6 +62,23 @@ const steps: Record<number, Partial<keyof FormFieldsShema>[]> = {
   2: ['cpf', 'phone'],
   3: ['email', 'emailConfirmation'],
   4: ['password', 'passwordConfirmation'],
+}
+
+async function validatePhone(phone: string) {
+  phone = phone.replace(/[\s-]/g, '')
+  const formatedPhone = `+55${phone}`
+  return await axios
+    .get('https://api-bdc.net/data/phone-number-validate', {
+      params: {
+        number: formatedPhone,
+        countryCode: 'br',
+        localityLanguage: 'pt-br',
+        key: 'bdc_d158b21a05d64c2ba1ccd85c3a1c353c',
+      },
+    })
+    .then(response => {
+      return response.data.isValid
+    })
 }
 
 export function Hero() {
