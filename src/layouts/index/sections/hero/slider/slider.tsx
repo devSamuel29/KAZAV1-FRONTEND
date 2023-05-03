@@ -5,9 +5,10 @@ import { useKeenSlider } from 'keen-slider/react'
 import * as Img from './img'
 
 export function Slider() {
-  const [currentSlide, setCurrentSlide] = React.useState(0)
+  const [currentSlide, setCurrentSlide] = useState(0)
   const [loaded, setLoaded] = useState(false)
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
+    loop: true,
     initial: 0,
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel)
@@ -17,18 +18,40 @@ export function Slider() {
     },
   })
 
+  function handlePreviousPhoto() {
+    instanceRef.current?.prev()
+  }
+
+  function handleNextPhoto() {
+    instanceRef.current?.next()
+  }
+
   return (
-    <div ref={sliderRef} className="keen-slider">
-      <div className="keen-slider__slide">
-        <Image src={Img.CarouselImage1} alt="carousel-image1" />
+    <>
+      <div ref={sliderRef} className="keen-slider w-[90%]">
+        <div className="keen-slider__slide"></div>
+        {loaded && instanceRef.current && (
+          <div className="absolute flex h-12 w-full items-center justify-center py-5">
+            {Array.from(
+              { length: instanceRef.current.track.details.slides.length },
+              (_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => {
+                    instanceRef.current?.moveToIdx(idx)
+                  }}
+                  className={
+                    currentSlide === idx
+                      ? `${'bg-dodgerblue duration-400 mx-5 cursor-pointer rounded-full border-0 px-5 opacity-20 transition'} ${'bg-dodgerblue duration-400 mx-5 cursor-pointer rounded-full border-0 px-6 opacity-100 transition'}`
+                      : `${'bg-dodgerblue duration-400 mx-5 cursor-pointer rounded-full border-0 px-5 opacity-20 transition'}`
+                  }
+                ></button>
+              )
+            )}
+          </div>
+        )}{' '}
       </div>
-      <div className="keen-slider__slide">
-        <Image src={Img.CarouselImage2} alt="carousel-image2" />
-      </div>
-      <div className="keen-slider__slide">
-        <Image src={Img.CarouselImage3} alt="carousel-image3" />
-      </div>
-    </div>
+    </>
   )
 }
 

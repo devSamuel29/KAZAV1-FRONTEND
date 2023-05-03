@@ -7,19 +7,19 @@ export function Hero() {
   }
   return (
     <>
-      <div className="flex items-center justify-end">
+      <div className="mx-auto flex  max-w-7xl items-center justify-end px-10 py-6">
         <p>
           Novo por aqui?
           <br />
           Clique na seta ao lado para Cadastrar-se
         </p>
         <Link href="/cadastrar">
-          <Svg.ArrowRight />
+          <Svg.ArrowRight className="" />
         </Link>
       </div>
 
       <form
-        className="m-auto my-20 flex w-[800px] max-w-[80%] flex-col space-y-3 rounded-md bg-[rgba(235,235,235,0.8)] px-20 py-10"
+        className="m-auto mb-20 mt-5 flex w-[800px] max-w-[80%] flex-col space-y-3 rounded-md bg-[rgba(235,235,235,0.8)] px-20 py-10"
         method="POST"
         onSubmit={handleSubmit}
       >
