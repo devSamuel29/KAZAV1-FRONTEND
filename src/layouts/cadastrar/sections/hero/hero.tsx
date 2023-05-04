@@ -46,7 +46,7 @@ const formFieldsShema = z
       ),
     passwordConfirmation: z
       .string()
-      .nonempty('Você confirmar sua senha novamente!')
+      .nonempty('Você digitar sua senha novamente!')
       .min(8, 'A confirmação de senha deve ter no mínimo 8 caracteres!'),
   })
   .refine(data => data.email === data.emailConfirmation, {
@@ -134,8 +134,8 @@ export function Hero() {
         className="m-auto my-20 w-[800px] max-w-[80%] rounded-md bg-[rgba(235,235,235,0.8)] px-20 py-10"
         method="POST"
       >
-        <div className="mb-3">
-          <h1 className="text-2xl font-medium">Quero criar uma conta na KazaRioBranco</h1>
+        <div className="mb-5">
+          <h1 className="text-2xl font-bold">Quero criar uma conta na KazaRioBranco</h1>
           <p>
             Crie sua conta na KazaRioBranco agora e acesse promoções exclusivas, fique por
             dentro das novidades e acompanhe suas compras!
