@@ -85,8 +85,26 @@ export function Navbar() {
             type="text"
             placeholder="Busque aqui"
           />
+          <Svg.BurgerMenu className="sm:flex md:hidden lg:hidden" />
 
-          <div className="flex items-center gap-6">
+          <div className="items-center gap-6 sm:hidden md:flex lg:hidden">
+            <Link href="/entrar">
+              <Svg.User />
+            </Link>
+
+            <Link href="#">
+              <Svg.Cart />
+            </Link>
+
+            <Link
+              className="rounded-full bg-primary px-5 py-2 font-medium text-white transition hover:brightness-[0.85]"
+              href="/cadastrar"
+            >
+              Criar conta
+            </Link>
+          </div>
+
+          <div className="items-center gap-6 sm:hidden md:hidden lg:flex">
             <Link
               href="/carrinho"
               className="flex items-center gap-2.5 text-center text-base/[19px] font-medium text-black transition hover:text-primary"
@@ -110,34 +128,24 @@ export function Navbar() {
             </Link>
           </div>
 
-          <div className="hidden">
-            <Link href="auth/entrar">
-              <Svg.User />
-            </Link>
-
-            <Link href="#">
-              <Svg.Cart />
-            </Link>
-          </div>
-
-          <div className="hidden">
+          {/* <div className="md:block lg:block xl:block">
             <Svg.BurgerMenu />
             <ul>
-              <li>
+              <li className="hidden">
                 <Link href="/entrar">
                   <Svg.User />
                   Entre ou <br /> Cadastre-se
                 </Link>
               </li>
 
-              <li>
+              <li className="hidden">
                 <Link href="/carrinho">
                   <Svg.Cart />
                   Carrinho
                 </Link>
               </li>
             </ul>
-          </div>
+          </div> */}
         </nav>
         <div className="border-y border-[rgba(0,0,0,0.025)] bg-[rgba(0,0,0,0.02)]">
           <nav className="m-auto flex w-full max-w-[1280px] items-center justify-between px-10">

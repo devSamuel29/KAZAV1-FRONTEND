@@ -26,8 +26,8 @@ const formFieldsShema = z
     phone: z
       .string()
       .nonempty('Você deve inserir seu número de telefone!')
-      .min(13, 'Insira o número de telefone corretamente!')
-      .refine(value => validatePhone(value), 'Número de telefone inválido!'),
+      .min(13, 'Insira o número de telefone corretamente!'),
+      // .refine(value => validatePhone(value), 'Número de telefone inválido!'),
     email: z
       .string()
       .nonempty('Você deve inserir seu email!')
@@ -93,7 +93,7 @@ export function Hero() {
     trigger,
   } = useForm<FormFieldsShema>({
     resolver: zodResolver(formFieldsShema),
-    mode: 'onChange',
+    mode: 'onSubmit',
   })
 
   const [formStep, setFormStep] = useState<number>(1)
