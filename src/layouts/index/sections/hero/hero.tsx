@@ -2,7 +2,7 @@ import { Slider } from './slider'
 
 export function Hero() {
   return (
-    <div className="mx-auto my-8 max-w-[1072px]">
+    <div className="mx-auto max-w-[1072px] py-[77px]">
       <Slider />
     </div>
   )
